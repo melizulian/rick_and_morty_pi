@@ -13,6 +13,7 @@ const Nav = ({onSearch}) => {
             <button className={style.button} onClick={() => onSearch(Math.ceil(Math.random()*285) + 1 ) }>Random</button>
             <button className={style.button} onClick={() => navigate("/about")}>About</button>
             <button className={style.button} onClick={() => navigate("/home")}>Home</button>
+            <button className={style.button} onClick={() => navigate("/favorites")}>Favorites</button>
             {/* <button onClick={() => navigate(-1)}>Back</button> */}
             </div>
         </div>

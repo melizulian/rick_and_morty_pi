@@ -16,17 +16,27 @@
     animation: myAnim 5s ease 0s 1 normal forwards;
 }
 
-.btn{
+.btn {
     position: absolute;
     background-color: red;
-    border-radius: 0 5px 0 5px;
+    border-radius: 0 15px 0 15px;
     right: 0;
     top: 0;
-    width: 25px;
-    height: 25px;
+    width: 33px;
+    height: 33px;
     color: white;
     cursor: pointer;
     border: none;
+}
+
+.heart {
+    position: absolute;
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border: none;
+    background-color: transparent;
+    left: 5px;
 }
 
 .container > img {
