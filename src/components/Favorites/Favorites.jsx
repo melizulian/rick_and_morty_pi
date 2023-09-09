@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Card from "../Card/Card"
 import { orderFav, filterFav } from "../../redux/actions"
 import { useState } from "react"
+import style from "./Favorites.module.css"
 
 const Favorites = () => {
     const favs = useSelector(state => state.favs)
@@ -22,12 +23,12 @@ const Favorites = () => {
 
     return (
         <div>
-            <select onChange={handleOrder}>
+            <select className={style.select} onChange={handleOrder}>
                 <option value="Ascending">Ascending</option>
                 <option value="Descending">Descending</option>
             </select>
 
-            <select onChange={handleFilter}>
+            <select className={style.select} onChange={handleFilter}>
                 {optionsGender.map((option) => {
                     return <option key={option} value={option}>{option}</option>
                 })}

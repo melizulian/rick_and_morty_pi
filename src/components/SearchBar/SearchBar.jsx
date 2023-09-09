@@ -20,6 +20,7 @@ export default function SearchBar(props) {
             <div className={style.containerInput}>
             <input className={style.input} onChange={handleChange} value={input} type='search' placeholder='write ID...🔍' />
             <button className={style.btn} onClick={() => handleSearch(input)}>Add</button>
+            
          </div>
       </div>
    );

@@ -30,24 +30,13 @@ const Card = (props) => {
    }, [favs, id])
 
    return (
-      // <div className={style.container}>
-      //     <button onClick={handleFavorite} className={style.heart}><p>{isFav ? "❤️" : "🤍"}</p></button>
-      //    {props.onClose && <button onClick={handleClose} className={style.btn}>X</button>}
-      //    <img className={style.img} src={image} alt='' />
-      //    <Link to={`/detail/${id}`} className={style.nameText}><h2>{name}</h2></Link>
-      //    <div className={style.containerData}>
-      //       <h2>{species}</h2>
-      //       <h2>{gender}</h2>
-      //       <h2>{status}</h2>
-      //       <h2>{origin.name}</h2>
-      //    </div>
-      // </div>
+      
       <div className={style.container}>
       <button onClick={handleFavorite} className={style.heart}><p>{isFav ? "❤️" : "🤍"}</p></button>
       {props.onClose && <button onClick={handleClose} className={style.btn}>X</button>}
       <img className={style.image} src={image} alt='' /> 
       <div className={style.containerData}>
-         <Link to={`/detail/${id}`}><h2>{name} | {id} </h2></Link>
+         <Link to={`/detail/${id}`} className={style.name}><h2>{name}  ID:{id} </h2></Link>
          <div className={style.detail}>
             <h4>{species}</h4>
             <h4>{gender}</h4>
