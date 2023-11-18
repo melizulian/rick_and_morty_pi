@@ -24,7 +24,7 @@ const Card = (props) => {
    }
 
    useEffect(() => {
-      if(favs.find(character => character.id == id)) {
+      if(favs.find(character => character.id === id)) {
          setIsFav(true)
       }
    }, [favs, id])
@@ -50,3 +50,4 @@ const Card = (props) => {
 
 
 export default Card;
+

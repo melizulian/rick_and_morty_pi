@@ -10,9 +10,11 @@ const Detail = () => {
 
     const [character, setCharacter] = useState({});
 
+    const URL_BASE = "http://localhost:3001/rickandmorty"
+
     useEffect(() => {
         setTimeout(() => {
-        axios.get(`https://rickandmortyapi.com/api/character/${id}`)
+        axios.get(`${URL_BASE}/character/${id}`)
         .then(({data}) => {
             if(!data.name) {
                 window.alert("No existe un personaje con ese id")
