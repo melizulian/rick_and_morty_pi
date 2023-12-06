@@ -23,34 +23,34 @@ function App() {
    //    }
    // }
 
-   const onSearch = (id) => {
-      const URL_BASE = "http://localhost:3001/rickandmorty"
-
-      if(characters.find((char) => char.id === id)) {
-         return alert("Personaje repetido")
+   const onSearch = async (id) => {
+      
+      try {
+         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         if (data.name) {
+                  setCharacters((oldChars) => [...oldChars, data]);
+               } else {
+                  window.alert('Algo salio mal');
+               }
+      } catch (error) {
+         console.log(error);
       }
 
-      fetch(`${URL_BASE}/character/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            alert('Algo salio mal');
-         }
-      });
    }
 
    const navigate = useNavigate();
 
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = "http://localhost:3001/rickandmorty/login/";
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-        const { access } = data;
-        setAccess(data);
-        access && navigate("/home");
-      });
+   async function login(userData) {
+      try {
+         const { email, password } = userData
+         const URL = "http://localhost:3001/rickandmorty/login/"
+         const {data} = await axios(URL + `?email=${email}&password=${password}`)
+         const { access } = data
+         setAccess(data)
+         access && navigate("/home")
+      } catch (error) {
+         console.log(error);
+      }
     }
 
    useEffect(()=>{
@@ -60,7 +60,7 @@ function App() {
    const onClose = (id) => {
       setCharacters(
         characters.filter((char) => {
-          return char.id !== Number(id)
+          return char.id !== id
         })
       )
      }
