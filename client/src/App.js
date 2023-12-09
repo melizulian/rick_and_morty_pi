@@ -10,6 +10,8 @@ import Favorites from './components/Favorites/Favorites';
 import axios from 'axios';
 
 function App() {
+   const navigate = useNavigate();
+   const location = useLocation();
    const [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
  
@@ -38,7 +40,7 @@ function App() {
 
    }
 
-   const navigate = useNavigate();
+   
 
    async function login(userData) {
       try {
@@ -46,12 +48,24 @@ function App() {
          const URL = "http://localhost:3001/rickandmorty/login/"
          const {data} = await axios(URL + `?email=${email}&password=${password}`)
          const { access } = data
-         setAccess(data)
+         // setAccess(data)
+         setAccess(access)
          access && navigate("/home")
-      } catch (error) {
-         console.log(error);
+      }
+      //  catch (error) {
+      //    console.log(error);
+      // }
+      catch({response}){
+         const {data} = response
+         alert(data.message)
       }
     }
+
+    function logout() {
+      setAccess(false);
+      navigate('/');
+    }
+
 
    useEffect(()=>{
       !access && navigate("/")
@@ -65,7 +79,7 @@ function App() {
       )
      }
    
-   const location = useLocation();
+   
 
      
    const isHome = location.pathname === "/";
@@ -73,7 +87,7 @@ function App() {
 
    return (
       <div className='App'>
-         {!isHome && <Nav onSearch={onSearch} />}
+         {!isHome && <Nav onSearch={onSearch} logout={logout}/>}
          <Routes>
             <Route path="/" element={<Landing handleLogin={login} />}/>
             <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />

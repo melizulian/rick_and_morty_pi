@@ -34,7 +34,7 @@ const Favorites = () => {
                 })}
             </select>
 
-            <div>
+            <div className={style.container}>
                 {favs?.map(character => <Card key={character.id}
                     character={character} />)}
             </div>

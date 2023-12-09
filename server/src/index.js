@@ -19,12 +19,14 @@
 // server.use(express.json());
 // server.use("/rickandmorty", router);
 
+const server = require("./app");
 const PORT = 3001;
-const server = require('./App')
-const {conn} = require('./DB_connection')
+const { conn } = require("./DB_connection");
 
-conn.sync({force:true}).then(()=>{
+conn.sync({ force: true }).then(() => {
+  console.log("DB connect success");
   server.listen(PORT, () => {
-    console.log(`Server running in port ${PORT}`);
-  })
-})
+    console.log(`Server is listening on port ${PORT}`);
+  });
+});
+

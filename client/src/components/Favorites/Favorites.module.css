@@ -15,3 +15,9 @@
 	text-shadow:0px 1px 0px #a611c0;
 	margin: 5px;
 }
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 20px;
+}

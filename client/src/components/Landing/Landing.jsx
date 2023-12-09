@@ -7,11 +7,14 @@ import gif from './rick-and-morty-driving.gif'
 const Landing = ({handleLogin}) => {
 
     const [formState, setFormState] = useState({
-        email: "meli@gmail.com",
-        password: "Hola123",
+        email: "",
+        password: "",
     })
 
-    const [formErrors, setFormErrors] = useState({})
+    const [formErrors, setFormErrors] = useState({
+        email: "",
+        password: "",
+    })
 
 
     const handleChange = (event)=>{
@@ -23,11 +26,9 @@ const Landing = ({handleLogin}) => {
        setFormErrors(validation({...formState, [property]: value}))
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        if(Object.keys(formErrors) == 0) {
-            handleLogin(formState)
-        }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        handleLogin(formState)
     }
 
     return(
